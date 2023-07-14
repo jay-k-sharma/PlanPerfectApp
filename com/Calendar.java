@@ -142,6 +142,24 @@ public abstract class Calendar extends JComponent {
 
     // CalendarEmptyClick methods
 
+    public void addCalendarEmptyClickListener(CalendarEmptyClickListener l) {
+        listenerList.add(CalendarEmptyClickListener.class, l);
+    }
+
+    public void removeCalendarEmptyClickListener(CalendarEmptyClickListener l) {
+        listenerList.remove(CalendarEmptyClickListener.class, l);
+    }
+
+    private void fireCalendarEmptyClick(LocalDateTime dateTime) {
+        Object[] listeners = listenerList.getListenerList();
+        CalendarEmptyClickEvent calendarEmptyClickEvent;
+        for (int i = listeners.length - 2; i >= 0; i -= 2) {
+            if (listeners[i] == CalendarEmptyClickListener.class) {
+                calendarEmptyClickEvent = new CalendarEmptyClickEvent(this, dateTime);
+                ((CalendarEmptyClickListener) listeners[i + 1]).calendarEmptyClick(calendarEmptyClickEvent);
+            }
+        }
+    }
 
     private void calculateScaleVars() {
         int width = getWidth();
