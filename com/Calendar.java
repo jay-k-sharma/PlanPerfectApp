@@ -260,3 +260,22 @@ public abstract class Calendar extends JComponent {
         
     // }
 
+    protected abstract DayOfWeek getStartDay();
+
+    protected abstract DayOfWeek getEndDay();
+
+    private void drawDayHeadings() {
+        int y = 20;
+        int x;
+        LocalDate day;
+        DayOfWeek dayOfWeek;
+
+        for (int i = getStartDay().getValue(); i <= getEndDay().getValue(); i++) {
+            dayOfWeek = DayOfWeek.of(i);
+            day = getDateFromDay(dayOfWeek);
+
+            String text = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.ENGLISH) + " " + day.getDayOfMonth() + "/" + day.getMonthValue();
+            x = (int) (dayToPixel(DayOfWeek.of(i)) + (dayWidth / 2) - (FONT_LETTER_PIXEL_WIDTH * text.length() / 2));
+            g2.drawString(text, x, y);
+        }
+    }
