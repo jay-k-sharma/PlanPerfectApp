@@ -279,3 +279,78 @@ public abstract class Calendar extends JComponent {
             g2.drawString(text, x, y);
         }
     }
+
+    private void drawGrid() {
+        // Save the original colour
+        final Color ORIG_COLOUR = g2.getColor();
+
+        // Set colour to grey with half alpha (opacity)
+        Color alphaGray = new Color(255, 255, 255, 0);
+        Color alphaGrayLighter = new Color(255, 255, 255, 128);
+        g2.setColor(alphaGray);
+
+        // Draw vertical grid lines
+        double x;
+        for (int i = getStartDay().getValue(); i <= getEndDay().getValue(); i++) {
+            x = dayToPixel(DayOfWeek.of(i));
+            g2.draw(new Line2D.Double(x, HEADER_HEIGHT, x, timeToPixel(END_TIME)));
+        }
+
+        // Draw horizontal grid lines
+        double y;
+        int x1;
+        for (LocalTime time = START_TIME; time.compareTo(END_TIME) <= 0; time = time.plusMinutes(30)) {
+            y = timeToPixel(time);
+            if (time.getMinute() == 0) {
+                g2.setColor(alphaGray);
+                x1 = 0;
+            } else {
+                g2.setColor(alphaGrayLighter);
+                x1 = TIME_COL_WIDTH;
+            }
+            g2.draw(new Line2D.Double(x1, y, dayToPixel(getEndDay()) + dayWidth, y));
+        }
+
+        // Reset the graphics context's colour
+        g2.setColor(ORIG_COLOUR);
+    }
+
+    private void drawTodayShade() {
+        LocalDate today = LocalDate.now();
+
+        // Check that date range being viewed is current date range
+        if (!dateInRange(today)) return;
+
+        final double x = dayToPixel(today.getDayOfWeek());
+        final double y = timeToPixel(START_TIME);
+        final double width = dayWidth;
+        final double height = timeToPixel(END_TIME) - timeToPixel(START_TIME);
+
+        final Color origColor = g2.getColor();
+        Color alphaGray = new Color(200, 200, 200, 64);
+        g2.setColor(alphaGray);
+        g2.fill(new Rectangle2D.Double(x, y, width, height));
+        g2.setColor(origColor);
+    }
+
+    private void drawCurrentTimeLine() {
+        LocalDate today = LocalDate.now();
+
+        // Check that date range being viewed is current date range
+        if (!dateInRange(today)) return;
+
+        final double x0 = dayToPixel(today.getDayOfWeek());
+        final double x1 = dayToPixel(today.getDayOfWeek()) + dayWidth;
+        final double y = timeToPixel(LocalTime.now());
+
+        final Color origColor = g2.getColor();
+        final Stroke origStroke = g2.getStroke();
+
+        g2.setColor(new Color(255, 127, 110));
+        g2.setStroke(new BasicStroke(2));
+        g2.draw(new Line2D.Double(x0, y, x1, y));
+
+        g2.setColor(origColor);
+        g2.setStroke(origStroke);
+    }
+
