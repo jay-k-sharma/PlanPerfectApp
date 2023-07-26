@@ -354,3 +354,51 @@ public abstract class Calendar extends JComponent {
         g2.setStroke(origStroke);
     }
 
+    private void drawTimes() {
+        int y;
+        for (LocalTime time = START_TIME; time.compareTo(END_TIME) <= 0; time = time.plusHours(1)) {
+            y = (int) timeToPixel(time) + 15;
+            g2.drawString(time.toString(), TIME_COL_WIDTH - (FONT_LETTER_PIXEL_WIDTH * time.toString().length()) - 5, y);
+        }
+    }
+
+    private void drawEvents() {
+        double x;
+        double y0;
+
+        for (CalendarEvent event : events) {
+            if (!dateInRange(event.getDate())) continue;
+
+            x = dayToPixel(event.getDate().getDayOfWeek());
+            y0 = timeToPixel(event.getStart());
+
+            Rectangle2D rect = new Rectangle2D.Double(x, y0, dayWidth, (timeToPixel(event.getEnd()) - timeToPixel(event.getStart())));
+            Color origColor = g2.getColor();
+            g2.setColor(event.getColor());
+            g2.fill(rect);
+            g2.setColor(origColor);
+
+            // Draw time header
+
+            // Store the current font state
+            Font origFont = g2.getFont();
+
+            final float fontSize = origFont.getSize() - 1.6F;
+
+            // Create a new font with same properties but bold
+            Font newFont = origFont.deriveFont(Font.BOLD, fontSize);
+            g2.setFont(newFont);
+
+            g2.drawString(event.getStart() + " - " + event.getEnd(), (int) x + 5, (int) y0 + 11);
+
+            // Unbolden
+            g2.setFont(origFont.deriveFont(fontSize));
+
+            // Draw the event's text
+            g2.drawString(event.getText(), (int) x + 5, (int) y0 + 23);
+
+            // Reset font
+            g2.setFont(origFont);
+        }
+    }
+
