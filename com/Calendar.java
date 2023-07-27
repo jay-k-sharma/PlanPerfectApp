@@ -402,3 +402,7 @@ public abstract class Calendar extends JComponent {
         }
     }
 
+    protected double getDayWidth() {
+        return dayWidth;
+    }
+
