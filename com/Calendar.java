@@ -406,3 +406,21 @@ public abstract class Calendar extends JComponent {
         return dayWidth;
     }
 
+    // Repaints every minute to update the current time line
+    private void setupTimer() {
+        Timer timer = new Timer(1000*60, e -> repaint());
+        timer.start();
+    }
+
+    protected abstract void setRangeToToday();
+
+    public void goToToday() {
+        setRangeToToday();
+        repaint();
+    }
+
+    public void addEvent(CalendarEvent event) {
+        events.add(event);
+        repaint();
+    }
+
