@@ -424,3 +424,9 @@ public abstract class Calendar extends JComponent {
         repaint();
     }
 
+    public boolean removeEvent(CalendarEvent event) {
+        boolean removed = events.remove(event);
+        repaint();
+        return removed;
+    }
+
