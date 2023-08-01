@@ -430,3 +430,7 @@ public abstract class Calendar extends JComponent {
         return removed;
     }
 
+    public void setEvents(ArrayList<CalendarEvent> events) {
+        this.events = events;
+        repaint();
+    }
