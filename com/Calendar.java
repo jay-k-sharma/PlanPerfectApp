@@ -452,3 +452,6 @@ public abstract class Calendar extends JComponent {
     //     paintComponent(g2, theme);
         
     
+
+    // }
+//This method is use to check if there is any event that is passed according to the current time.
