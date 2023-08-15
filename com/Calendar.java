@@ -460,6 +460,8 @@ public abstract class Calendar extends JComponent {
         LocalDate DateOfToday = LocalDate.now();
         for (CalendarEvent eventpassed : events) {
 
+            if (eventpassed.getDate().isBefore(DateOfToday)) {
+        }
         return eventPassedAlready;
     }
 
