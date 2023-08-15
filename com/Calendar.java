@@ -459,6 +459,8 @@ public abstract class Calendar extends JComponent {
         ArrayList<CalendarEvent> eventPassedAlready = new ArrayList<>();
         LocalDate DateOfToday = LocalDate.now();
         for (CalendarEvent eventpassed : events) {
+
+        return eventPassedAlready;
     }
 
 }
