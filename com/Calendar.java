@@ -461,6 +461,7 @@ public abstract class Calendar extends JComponent {
         for (CalendarEvent eventpassed : events) {
 
             if (eventpassed.getDate().isBefore(DateOfToday)) {
+                eventPassedAlready.add(eventpassed);
             }
         }
         return eventPassedAlready;
