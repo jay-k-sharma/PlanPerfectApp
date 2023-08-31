@@ -10,5 +10,7 @@ public class CalendarEmptyClickEvent extends AWTEvent {
         super(source, 0);
         this.dateTime = dateTime;
     }
+
+    public LocalDateTime getDateTime() {
     }
 }
