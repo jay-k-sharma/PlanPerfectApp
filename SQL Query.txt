@@ -1,0 +1,24 @@
+show databases;
+
+create database CA_Public_Holidays;
+
+use CA_Public_Holidays; 
+
+CREATE TABLE 2023_Holidays ( Holiday_id INT NOT NULL, Holiday_Name VARCHAR(255), Day INT NOT NULL, Month INT NOT NULL, Year INT NOT NULL, PRIMARY KEY (Holiday_id) );
+
+CREATE TABLE 2024_Holidays ( Holiday_id INT NOT NULL, Holiday_Name VARCHAR(255), Day INT NOT NULL, Month INT NOT NULL, Year INT NOT NULL, PRIMARY KEY (Holiday_id) );
+
+CREATE TABLE 2025_Holidays ( Holiday_id INT NOT NULL, Holiday_Name VARCHAR(255), Day INT NOT NULL, Month INT NOT NULL, Year INT NOT NULL, PRIMARY KEY (Holiday_id) );
+
+INSERT INTO `2023_Holidays` (`Holiday_id`, `Holiday_Name`, `Day`, `Month`, `Year`) VALUES (1, 'New Year''s Day', 1, 1, 2023), (2, 'Family Day (AB, BC, NB, ON, SK)', 20, 2, 2023), (3, 'Louis Riel Day (MB)', 20, 2, 2023), (4, 'Islander Day (PEI)', 20, 2, 2023), (5, 'Heritage Day (NS)', 20, 2, 2023), (6, 'Saint Patrick''s Day', 17, 3, 2023), (7, 'Good Friday', 7, 4, 2023), (8, 'Easter Monday', 10, 4, 2023), (9, 'Saint George''s Day (NL)', 23, 4, 2023), (10, 'National Patriots'' Day (QC)', 22, 5, 2023), (11, 'Victoria Day', 22, 5, 2023), (12, 'National Indigenous Day (NT, YT)', 21, 6, 2023), (13, 'Saint-Jean-Baptiste Day (QC)', 24, 6, 2023), (14, 'Discovery Day (NL)', 24, 6, 2023), (15, 'Canada Day', 1, 7, 2023), (16, 'Nunavut Day (NU)', 9, 7, 2023), (17, 'Orangemen''s Day (NL)', 9, 7, 2023), (18, 'Civic Holiday', 7, 8, 2023), (19, 'British Columbia Day (BC)', 7, 8, 2023), (20, 'New Brunswick Day (NB)', 7, 8, 2023), (21, 'Saskatchewan Day (SK)', 7, 8, 2023), (22, 'Regatta Day (NL)', 2, 8, 2023), (23, 'Discovery Day (YT)', 21, 8, 2023), (24, 'Labour Day', 4, 9, 2023), (25, 'National Day for Truth and Reconciliation', 30, 9, 2023), (26, 'Thanksgiving', 9, 10, 2023), (27, 'Remembrance Day', 11, 11, 2023), (28, 'Christmas Day', 25, 12, 2023), (29, 'Boxing Day', 26, 12, 2023);
+
+
+SELECT * FROM 2023_Holidays; /* For reviewing table */
+
+INSERT INTO `2024_Holidays` (`Holiday_id`, `Holiday_Name`, `Day`, `Month`, `Year`) VALUES (1, 'New Year''s Day', 1, 1, 2024), (2, 'Family Day (AB, BC, NB, ON, SK)', 19, 2, 2024), (3, 'Louis Riel Day (MB)', 19, 2, 2024), (4, 'Islander Day (PEI)', 19, 2, 2024), (5, 'Heritage Day (NS)', 19, 2, 2024), (6, 'Saint Patrick''s Day', 17, 3, 2024), (7, 'Good Friday', 29, 3, 2024), (8, 'Easter Monday', 1, 4, 2024), (9, 'Saint George''s Day (NL)', 23, 4, 2024), (10, 'National Patriots'' Day (QC)', 20, 5, 2024), (11, 'Victoria Day', 20, 5, 2024), (12, 'National Indigenous Day (NT, YT)', 21, 6, 2024), (13, 'Saint-Jean-Baptiste Day (QC)', 24, 6, 2024), (14, 'Discovery Day (NL)', 24, 6, 2024), (15, 'Canada Day', 1, 7, 2024), (16, 'Nunavut Day (NU)', 9, 7, 2024), (17, 'Orangemen''s Day (NL)', 12, 7, 2024), (18, 'Civic Holiday', 5, 8, 2024), (19, 'British Columbia Day (BC)', 5, 8, 2024), (20, 'New Brunswick Day (NB)', 5, 8, 2024), (21, 'Saskatchewan Day (SK)', 5, 8, 2024), (22, 'Regatta Day (NL)', 7, 8, 2024), (23, 'Discovery Day (YT)', 19, 8, 2024), (24, 'Labour Day', 2, 9, 2024), (25, 'National Day for Truth and Reconciliation', 30, 9, 2024), (26, 'Thanksgiving', 14, 10, 2024), (27, 'Remembrance Day', 11, 11, 2024), (28, 'Christmas Day', 25, 12, 2024), (29, 'Boxing Day', 26, 12, 2024);
+
+SELECT * FROM 2024_Holidays; /* For reviewing table */
+
+INSERT INTO `2025_Holidays` (`Holiday_id`, `Holiday_Name`, `Day`, `Month`, `Year`) VALUES (1, 'New Year''s Day', 1, 1, 2025), (2, 'Family Day (AB, BC, NB, ON, SK)', 17, 2, 2025), (3, 'Louis Riel Day (MB)', 17, 2, 2025), (4, 'Islander Day (PEI)', 17, 2, 2025), (5, 'Heritage Day (NS)', 17, 2, 2025), (6, 'Saint Patrick''s Day', 17, 3, 2025), (7, 'Good Friday', 18, 4, 2025), (8, 'Easter Monday', 21, 4, 2025), (9, 'Saint George''s Day (NL)', 21, 4, 2025), (10, 'National Patriots'' Day (QC)', 19, 5, 2025), (11, 'Victoria Day', 19, 5, 2025), (12, 'National Indigenous Day (NT, YT)', 21, 6, 2025), (13, 'Saint-Jean-Baptiste Day (QC)', 24, 6, 2025), (14, 'Discovery Day (NL)', 24, 6, 2025), (15, 'Canada Day', 1, 7, 2025), (16, 'Nunavut Day (NU)', 9, 7, 2025), (17, 'Orangemen''s Day (NL)', 12, 7, 2025), (18, 'Civic Holiday', 4, 8, 2025), (19, 'British Columbia Day (BC)', 4, 8, 2025), (20, 'New Brunswick Day (NB)', 4, 8, 2025), (21, 'Saskatchewan Day (SK)', 4, 8, 2025), (22, 'Regatta Day (NL)', 6, 8, 2025), (23, 'Discovery Day (YT)', 18, 8, 2025), (24, 'Labour Day', 1, 9, 2025), (25, 'National Day for Truth and Reconciliation', 30, 9, 2025), (26, 'Thanksgiving', 13, 10, 2025), (27, 'Remembrance Day', 11, 11, 2025), (28, 'Christmas Day', 25, 12, 2025), (29, 'Boxing Day', 26, 12, 2025);
+
+SELECT * FROM 2025_Holidays; /* For reviewing table */
